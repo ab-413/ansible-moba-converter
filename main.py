@@ -28,10 +28,10 @@ ipaddr = re.findall(readdr, data)
 if args.out is not None:
     with open(args.out, 'w', encoding='UTF-8') as file:
         for x in range(len(ipaddr)):
-            line = name[x].upper() + "=#109#0%" + \
+            line = re.sub(r"\w*-s-", "", name[x]) + "=#109#0%" + \
                 ipaddr[x].lstrip("host=") + f"{mobaline}\n"
             file.write(line)
 else:
     for x in range(len(ipaddr)):
-        line = name[x].upper() + "=#109#0%" + ipaddr[x].lstrip("host=") + f"{mobaline}\n"
+        line = re.sub(r"\w*-s-", "", name[x]) + "=#109#0%" + ipaddr[x].lstrip("host=") + f"{mobaline}\n"
         print(line)
